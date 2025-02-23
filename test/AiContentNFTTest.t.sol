@@ -6,7 +6,7 @@ import "../src/AiContentNFT.sol";
 
 contract AIContentNFTTest is Test {
     AIContentNFT nftContract;
-    address owner = address(this); // The test contract acts as the deployer
+    address owner = address(this);
     address user1 = address(0x123);
     address user2 = address(0x456);
 
@@ -19,10 +19,10 @@ contract AIContentNFTTest is Test {
         string memory contentType = "image";
         string memory ipfsHash = "QmTestHash123";
 
-        vm.prank(user1); // Simulate user1 calling mintNFT
+        vm.prank(user1);
         nftContract.mintNFT(title, contentType, ipfsHash);
 
-        uint256 tokenId = 1; // First minted NFT should have tokenId = 1
+        uint256 tokenId = 1;
 
         assertEq(
             nftContract.ownerOf(tokenId),
@@ -73,7 +73,6 @@ contract AIContentNFTTest is Test {
 
         uint256 tokenId = 1;
 
-        // Expect no revert since tokenURI is public
         string memory uri = nftContract.tokenURI(tokenId);
 
         string memory expectedURI = string(
