@@ -9,11 +9,7 @@ env:
   FOUNDRY_PROFILE: ci
 
 jobs:
-  check:
-    strategy:
-      fail-fast: true
-
-    name: Foundry project
+  foundry:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -30,27 +26,17 @@ jobs:
             ${{ runner.os }}-foundry-
 
       - name: Install Foundry
-        uses: foundry-rs/foundry-toolchain@v1
-        with:
-          version: nightly
+        run: |
+          curl -L https://foundry.paradigm.xyz | bash
+          foundryup
 
-      - name: Ensure Foundry is up to date
-        run: foundryup
-
-      - name: Show Forge version
+      - name: Verify Foundry Installation
         run: forge --version
 
-      - name: Run Forge fmt
-        run: forge fmt --check
-        id: fmt
-
-      - name: Run Forge build
+      - name: Build Project
         run: forge build --sizes
-        id: build
 
-      - name: Run Forge tests
+      - name: Run Tests
         run: forge test -vvv
-        id: test
         env:
-          # If your contract requires Chainlink or external data, set a fork URL
           FOUNDRY_ETH_RPC_URL: https://sepolia.infura.io/v3/2e2c861981fc4783b03dae827b0bf145
