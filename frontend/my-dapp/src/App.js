@@ -6,6 +6,8 @@ import StoryGenerator from "./story"; // Import Story Generator component
 import ArticleGenerator from "./article"; // Import Article Generator component
 import CodeGenerator from "./code";
 import PoemGenerator from "./poem";
+import ImageGenerator from "./Image";
+import DigitalArtGenerator from "./digitalart";
 // Define a theme object (optional)
 const theme = {
   colors: {
@@ -25,6 +27,8 @@ function App() {
           <Route path="/article-generator" element={<ArticleGenerator />} />
           <Route path="/code-generator" element={<CodeGenerator />} />
           <Route path="/poem-generator" element={<PoemGenerator />} />
+          <Route path="/image-generator" element={<ImageGenerator />} />
+          <Route path="/digital-art-generator" element={<DigitalArtGenerator />} />
         </Routes>
       </Router>
     </ThemeProvider>

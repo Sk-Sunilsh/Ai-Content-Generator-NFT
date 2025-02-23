@@ -7,7 +7,9 @@ export const PageWrapper = styled.div`
   align-items: center;
   justify-content: flex-start;
   height: 100vh;
-  background: linear-gradient(100deg, #cb113c, #1a57c0);
+   background: linear-gradient(100deg, #cb113c, #1a57c0);
+            background: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d3JpdGluZyUyMGElMjBzdG9yeXxlbnwwfHwwfHx8MA%3D%3D') no-repeat center center/cover;
+
   margin: 0;
   padding: 0;
   overflow-x: hidden;

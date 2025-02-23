@@ -18,7 +18,7 @@ import {
 console.log("AIContentNFT JSON:", AiContent);
 
 const CONTRACT_ABI = AiContent;
-const CONTRACT_ADDRESS = "0xcBC59932902FCA201b0cBdC3B7d76703b5Fd0F0f"; // Deployed contract address on Sepolia
+const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS; // Deployed contract address on Sepolia
 
 const CodeGenerator = () => {
   const [prompt, setPrompt] = useState("");
@@ -34,7 +34,7 @@ const CodeGenerator = () => {
 
     try {
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyDhULnNhPNUmgnqHltZktdnP_LYOllP1cc`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.REACT_APP_API_KEY1}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

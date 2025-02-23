@@ -9,34 +9,37 @@ env:
   FOUNDRY_PROFILE: ci
 
 jobs:
-  foundry:
+  check:
+    strategy:
+      fail-fast: true
+
+    name: Foundry project
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Cache Foundry build
-        uses: actions/cache@v3
-        with:
-          path: ~/.foundry
-          key: ${{ runner.os }}-foundry-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-foundry-
-
       - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Show Forge version
         run: |
-          curl -L https://foundry.paradigm.xyz | bash
-          foundryup
+          forge --version
 
-      - name: Verify Foundry Installation
-        run: forge --version
+      - name: Run Forge fmt
+        run: |
+          forge fmt --check
+        id: fmt
 
-      - name: Build Project
-        run: forge build --sizes
+      - name: Run Forge build
+        run: |
+          forge build --sizes
+        id: build
 
-      - name: Run Tests
-        run: forge test -vvv
-        env:
-          FOUNDRY_ETH_RPC_URL: https://sepolia.infura.io/v3/2e2c861981fc4783b03dae827b0bf145
+      - name: Run Forge tests
+        run: |
+          forge test -vvv
+        id: test
