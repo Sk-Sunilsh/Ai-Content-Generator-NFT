@@ -15,12 +15,11 @@ export const PageWrapper = styled.div`
 
 /* Navigation Bar */
 export const Navbar = styled.nav`
-  background: #4a90e2;
-  color: white;
+  color: grey;
   text-align: center;
   width: 100%;
   padding: 15px 0;
-  font-size: 18px;
+  font-size: 25px;
 `;
 
 export const NavLink = styled.a`
@@ -29,9 +28,9 @@ export const NavLink = styled.a`
   margin: 0 15px;
   font-weight: bold;
   transition: color 0.3s;
-
+text-align: center;
   &:hover {
-    color: #ffcc00;
+    color:grey;
   }
 `;
 

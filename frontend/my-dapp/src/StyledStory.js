@@ -17,16 +17,16 @@ export const PageWrapper = styled.div`
 
 /* Navbar */
 export const Navbar = styled.nav`
-  background: #4a90e2;
-  color: white;
-  text-align: center;
+
+  color: grey;
+  text-align: center;s
   width: 100%;
   padding: 15px 0;
-  font-size: 18px;
+  font-size: 25px;
 `;
 
 export const NavLink = styled.a`
-  color: white;
+  color: red
   text-decoration: none;
   margin: 0 15px;
   font-weight: bold;

@@ -15,7 +15,7 @@ import {
   LoadingText,
 } from "./Styleddigitalart";
 
-const API_KEY = "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"; // Replace with your API Key
+const API_KEY = process.env.REACT_APP_API_KEY; // Replace with your API Key
 const CONTRACT_ABI = AiContent;
 const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS; // Deployed contract address on Sepolia
 
@@ -33,7 +33,8 @@ const DigitalArtGenerator = () => {
     try {
       console.log("📡 Sending request to Hugging Face API...");
       const response = await fetch(
-        "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0",
+      "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0",
+
         {
           headers: { 
             Authorization: `Bearer ${API_KEY}`,
